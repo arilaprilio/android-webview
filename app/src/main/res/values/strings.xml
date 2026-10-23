@@ -27,6 +27,7 @@
     <string name="action_home">Home</string>
     <string name="action_keyboard">Keyboard</string>
     <string name="action_settings">Settings</string>
+    <string name="action_menu">Menu</string>
     <string name="action_exit">Exit app</string>
 
     <!-- Auth dialog -->

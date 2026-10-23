@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/wv_bg">
 
-    <!-- WebView fills the screen. clickable+focusable so edge-swipes still reach dispatchTouchEvent. -->
+    <!-- WebView fills the screen. -->
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
@@ -40,24 +40,24 @@
             tools:text="Loading https://example.com …" />
     </LinearLayout>
 
-    <!-- Subtle edge hint strips so users can discover the gestures. Opacity is low. -->
-    <View
-        android:layout_width="4dp"
-        android:layout_height="80dp"
-        android:layout_gravity="start|center_vertical"
-        android:background="@color/wv_edge_hint" />
-    <View
-        android:layout_width="4dp"
-        android:layout_height="80dp"
-        android:layout_gravity="end|center_vertical"
-        android:background="@color/wv_edge_hint" />
-    <View
-        android:layout_width="80dp"
-        android:layout_height="4dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="@color/wv_edge_hint" />
+    <!-- Small semi-transparent FAB at bottom-right to toggle the toolbar.
+         Mini size (40dp) so it does not obstruct the page content. -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.4"
+        android:contentDescription="@string/action_menu"
+        app:fabSize="mini"
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/wv_accent"
+        app:srcCompat="@android:drawable/ic_menu_more"
+        app:elevation="4dp" />
 
-    <!-- Bottom toolbar (hidden by default). Shown when user swipes from the bottom edge. -->
+    <!-- Bottom toolbar (hidden by default). Shown when FAB is tapped. -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/edge_toolbar"
         android:layout_width="match_parent"

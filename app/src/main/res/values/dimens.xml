@@ -1,6 +1,3 @@
 <resources>
-    <!-- Default edge-swipe thickness, keep in sync with EdgeGestureDetector. -->
-    <dimen name="edge_swipe_threshold">24dp</dimen>
-    <dimen name="settings_panel_width">480dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
 </resources>

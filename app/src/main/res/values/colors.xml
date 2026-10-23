@@ -3,5 +3,4 @@
     <color name="wv_panel">#1E1E1E</color>
     <color name="wv_panel_light">#FAFAFA</color>
     <color name="wv_accent">#2962FF</color>
-    <color name="wv_edge_hint">#33FFFFFF</color>
 </resources>
