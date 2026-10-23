@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private val settings get() = WebViewApp.instance.settings
 
     private var hasLoadedOnce = false
+    private var pendingHistoryClear = false
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,9 +70,13 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         configureImmersive()
         autoReload.reschedule()
-        // If the user changed the URL in SettingsActivity and came back, reload it.
+        // If the user changed the URL in SettingsActivity and came back, reload it
+        // and clear stale history so Back doesn't resurface the old URL.
         val current = binding.webview.url
-        if (current == null || current != settings.url) loadConfiguredUrl()
+        if (current == null || current != settings.url) {
+            pendingHistoryClear = true
+            loadConfiguredUrl()
+        }
     }
 
     override fun onPause() {
@@ -181,6 +186,12 @@ class MainActivity : AppCompatActivity() {
             override fun onPageFinished(view: WebView, url: String?) {
                 hasLoadedOnce = true
                 binding.loader.visibility = View.GONE
+                // Clear history after loading a new configured URL so the Back button
+                // doesn't navigate to the previous/default URL.
+                if (pendingHistoryClear) {
+                    pendingHistoryClear = false
+                    view.clearHistory()
+                }
             }
 
             override fun onReceivedError(
