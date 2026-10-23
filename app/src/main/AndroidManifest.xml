@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Needed to load remote URLs and show a loader when offline. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Hide input-method ime insets manually; declaring here suppresses legacy warnings. -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="true" />
+
+    <application
+        android:name=".KioskApp"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KioskAndroid"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="34">
+
+        <!-- Main kiosk window.
+             - sensorLandscape locks orientation but allows both landscape rotations.
+             - configChanges prevents the WebView from being destroyed on rotation/keyboard.
+             - launchMode singleTask + clearTaskOnLaunch keeps a single kiosk task alive. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:clearTaskOnLaunch="true"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|keyboard|navigation|uiMode|density|fontScale"
+            android:resizeableActivity="false"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/Theme.KioskAndroid.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Settings screen opened from the left-edge swipe. Landscape too. -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.KioskAndroid.NoActionBar"
+            android:parentActivityName=".MainActivity" />
+    </application>
+</manifest>

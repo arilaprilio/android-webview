@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base Material 3 theme that follows system dark/light; the kiosk setting can override. -->
+    <style name="Theme.KioskAndroid" parent="Theme.Material3.DayNight">
+        <item name="android:statusBarColor">@android:color/black</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+
+    <style name="Theme.KioskAndroid.NoActionBar" parent="Theme.KioskAndroid">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+    </style>
+</resources>

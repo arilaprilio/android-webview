@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kiosk_bg">
+
+    <!-- WebView fills the screen. clickable+focusable so edge-swipes still reach dispatchTouchEvent. -->
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/kiosk_bg" />
+
+    <!-- Loader overlay shown while the URL is unreachable. -->
+    <LinearLayout
+        android:id="@+id/loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/kiosk_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:indeterminateTint="@color/kiosk_accent" />
+
+        <TextView
+            android:id="@+id/loader_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            tools:text="Loading https://example.com …" />
+    </LinearLayout>
+
+    <!-- Subtle edge hint strips so users can discover the gestures. Opacity is low. -->
+    <View
+        android:layout_width="4dp"
+        android:layout_height="80dp"
+        android:layout_gravity="start|center_vertical"
+        android:background="@color/kiosk_edge_hint" />
+    <View
+        android:layout_width="4dp"
+        android:layout_height="80dp"
+        android:layout_gravity="end|center_vertical"
+        android:background="@color/kiosk_edge_hint" />
+    <View
+        android:layout_width="80dp"
+        android:layout_height="4dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/kiosk_edge_hint" />
+
+    <!-- Bottom toolbar (hidden by default). Shown when user swipes from the bottom edge. -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/edge_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_reload"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/action_reload" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_back"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/action_back" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_home"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/action_home" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_keyboard"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/action_keyboard" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_settings"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_settings" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

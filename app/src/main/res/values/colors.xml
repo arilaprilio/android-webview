@@ -1,0 +1,7 @@
+<resources>
+    <color name="kiosk_bg">#000000</color>
+    <color name="kiosk_panel">#1E1E1E</color>
+    <color name="kiosk_panel_light">#FAFAFA</color>
+    <color name="kiosk_accent">#2962FF</color>
+    <color name="kiosk_edge_hint">#33FFFFFF</color>
+</resources>
