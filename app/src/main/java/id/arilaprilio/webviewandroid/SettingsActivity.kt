@@ -1,10 +1,10 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.innovationsystem.kioskandroid.databinding.ActivitySettingsBinding
+import id.arilaprilio.webviewandroid.databinding.ActivitySettingsBinding
 
 /**
  * Mirrors the Vue settings page in src/renderer/src/App.vue of the Electron app.
@@ -13,7 +13,7 @@ import com.innovationsystem.kioskandroid.databinding.ActivitySettingsBinding
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
-    private val settings get() = KioskApp.instance.settings
+    private val settings get() = WebViewApp.instance.settings
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

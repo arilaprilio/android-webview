@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
-    <!-- No cloud backup; kiosk settings are device-local. -->
+    <!-- No cloud backup; app settings are device-local. -->
     <cloud-backup>
         <exclude domain="root" />
     </cloud-backup>

@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KioskAndroid"
+rootProject.name = "WebViewAndroid"
 include(":app")

@@ -1,4 +1,4 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 import android.content.Context
 import android.util.TypedValue
@@ -6,11 +6,11 @@ import android.view.MotionEvent
 import kotlin.math.abs
 
 /**
- * Detects kiosk edge swipes without stealing taps/scrolls from the WebView.
+ * Detects edge swipes without stealing taps/scrolls from the WebView.
  *
  * How to use from an Activity:
  *     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
- *         if (edgeDetector.onTouch(ev)) return true  // consumed as kiosk gesture
+ *         if (edgeDetector.onTouch(ev)) return true  // consumed as edge gesture
  *         return super.dispatchTouchEvent(ev)
  *     }
  *
@@ -30,7 +30,7 @@ class EdgeGestureDetector(
         fun onLeftEdgeSwipe()      // left → right: open settings panel
         fun onRightEdgeSwipe()     // right → left: toggle soft keyboard
         fun onBottomEdgeSwipe()    // bottom → up: open edge toolbar
-        fun onCornerLongPress()    // top-left corner long-hold: unlock / quit kiosk
+        fun onCornerLongPress()    // top-left corner long-hold: unlock / quit app
     }
 
     private val edgeThicknessPx = dp(context, 24f)
@@ -67,7 +67,7 @@ class EdgeGestureDetector(
             }
 
             MotionEvent.ACTION_POINTER_DOWN -> {
-                // Any multi-touch cancels an in-progress kiosk gesture to avoid false triggers
+                // Any multi-touch cancels an in-progress edge gesture to avoid false triggers
                 // from a user pinch-zooming the page near an edge.
                 tracking = false
                 startEdge = Edge.NONE
@@ -148,7 +148,7 @@ class EdgeGestureDetector(
 
     /**
      * MotionEvent does not expose display size directly. We approximate using the first
-     * pointer's raw coordinates vs. local coordinates; good enough because kiosk mode
+     * pointer's raw coordinates vs. local coordinates; good enough because fullscreen mode
      * uses the full window and edge thresholds are generous.
      */
     private fun resolveDisplayDimension(ev: MotionEvent, horizontal: Boolean): Float {

@@ -1,4 +1,4 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 import android.app.Dialog
 import android.content.Context

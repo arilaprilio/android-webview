@@ -60,7 +60,7 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: kiosk-debug-apk
+          name: webview-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 14
@@ -68,7 +68,7 @@ jobs:
       - name: Upload release APK
         uses: actions/upload-artifact@v4
         with:
-          name: kiosk-release-apk
+          name: webview-release-apk
           path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
           retention-days: 30

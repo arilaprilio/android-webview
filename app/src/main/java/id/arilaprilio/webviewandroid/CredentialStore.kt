@@ -1,4 +1,4 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -12,7 +12,7 @@ import androidx.security.crypto.MasterKey
  * so a user's mental model carries over.
  *
  * NOTE: androidx.security:security-crypto is intentionally NOT a dependency here
- * to avoid pulling Tink+Protobuf into the APK for a kiosk that is often used on
+ * to avoid pulling Tink+Protobuf into the APK for an app that is often used on
  * trusted private networks. If you need encryption-at-rest, add
  *   implementation("androidx.security:security-crypto:1.1.0-alpha06")
  * to app/build.gradle.kts and uncomment the EncryptedSharedPreferences branch.
@@ -51,7 +51,7 @@ class CredentialStore(context: Context) {
     fun clearAll() = prefs.edit().clear().apply()
 
     companion object {
-        private const val PREFS_NAME = "kiosk_credentials"
+        private const val PREFS_NAME = "webview_credentials"
 
         /** Build the lookup key for a WebView auth challenge. Realm may be empty. */
         fun keyFor(host: String, realm: String?): String =

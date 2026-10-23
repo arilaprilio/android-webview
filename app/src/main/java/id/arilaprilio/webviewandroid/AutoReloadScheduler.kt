@@ -1,4 +1,4 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 import android.os.Handler
 import android.os.Looper
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
  *
  * Scheduling uses the main-thread Handler to stay in sync with WebView.reload(), which
  * must be invoked on the UI thread. We intentionally avoid WorkManager because:
- *   - The kiosk is always foreground, so we don't need battery-aware deferral.
+ *   - The app is always foreground, so we don't need battery-aware deferral.
  *   - WorkManager's minimum periodic interval of 15 minutes is too coarse for "every 1m".
  *   - A single Handler is trivial to cancel + rebuild on settings changes.
  */

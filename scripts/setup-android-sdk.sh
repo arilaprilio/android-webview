@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# Headless setup: Gradle + Android cmdline-tools + SDK packages untuk kiosk-android.
+# Headless setup: Gradle + Android cmdline-tools + SDK packages untuk webview-android.
 #
 # Target: Ubuntu 25.10 (atau turunan Debian) dengan JDK 17 sudah terpasang.
 # Pemakaian:
@@ -16,7 +16,7 @@
 #
 # Yang TIDAK di-install:
 #   - Android Studio (headless, kita bisa live tanpa IDE)
-#   - Emulator images (kiosk biasanya pakai device fisik)
+#   - Emulator images (biasanya pakai device fisik)
 #
 # Idempotent: aman dijalankan ulang.
 # ============================================================================
@@ -95,7 +95,7 @@ sdkmanager \
 log "ADB: $(adb --version 2>/dev/null | head -1 || echo 'not in PATH yet')"
 
 # ---- 5. Persist env di ~/.bashrc ------------------------------------------
-marker="# >>> kiosk-android env >>>"
+marker="# >>> webview-android env >>>"
 if ! grep -qF "$marker" "$HOME/.bashrc" 2>/dev/null; then
     log "Adding env exports to ~/.bashrc"
     cat >> "$HOME/.bashrc" <<EOF
@@ -104,7 +104,7 @@ $marker
 export ANDROID_SDK_ROOT="$ANDROID_SDK_ROOT"
 export ANDROID_HOME="\$ANDROID_SDK_ROOT"
 export PATH="\$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:\$ANDROID_SDK_ROOT/platform-tools:\$PATH"
-# <<< kiosk-android env <<<
+# <<< webview-android env <<<
 EOF
 fi
 

@@ -6,21 +6,21 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/kiosk_bg">
+    android:background="@color/wv_bg">
 
     <!-- WebView fills the screen. clickable+focusable so edge-swipes still reach dispatchTouchEvent. -->
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/kiosk_bg" />
+        android:background="@color/wv_bg" />
 
     <!-- Loader overlay shown while the URL is unreachable. -->
     <LinearLayout
         android:id="@+id/loader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/kiosk_bg"
+        android:background="@color/wv_bg"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="visible">
@@ -28,7 +28,7 @@
         <ProgressBar
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:indeterminateTint="@color/kiosk_accent" />
+            android:indeterminateTint="@color/wv_accent" />
 
         <TextView
             android:id="@+id/loader_text"
@@ -45,17 +45,17 @@
         android:layout_width="4dp"
         android:layout_height="80dp"
         android:layout_gravity="start|center_vertical"
-        android:background="@color/kiosk_edge_hint" />
+        android:background="@color/wv_edge_hint" />
     <View
         android:layout_width="4dp"
         android:layout_height="80dp"
         android:layout_gravity="end|center_vertical"
-        android:background="@color/kiosk_edge_hint" />
+        android:background="@color/wv_edge_hint" />
     <View
         android:layout_width="80dp"
         android:layout_height="4dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:background="@color/kiosk_edge_hint" />
+        android:background="@color/wv_edge_hint" />
 
     <!-- Bottom toolbar (hidden by default). Shown when user swipes from the bottom edge. -->
     <com.google.android.material.card.MaterialCardView

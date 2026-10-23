@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.innovationsystem.kioskandroid"
+    namespace = "id.arilaprilio.webviewandroid"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.innovationsystem.kioskandroid"
+        applicationId = "id.arilaprilio.webviewandroid"
         minSdk = 29              // Android 10 (per keputusan user)
         targetSdk = 34
         versionCode = 1

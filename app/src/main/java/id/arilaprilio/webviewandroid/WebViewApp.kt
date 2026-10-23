@@ -1,4 +1,4 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 import android.app.Application
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
  * Application singleton. Holds the shared SettingsStore and applies the saved
  * dark/light mode as early as possible so the WebView does not flash the wrong theme.
  */
-class KioskApp : Application() {
+class WebViewApp : Application() {
 
     lateinit var settings: SettingsStore
         private set
@@ -28,14 +28,14 @@ class KioskApp : Application() {
     }
 
     companion object {
-        private const val PREFS_NAME = "kiosk_settings"
-        lateinit var instance: KioskApp
+        private const val PREFS_NAME = "webview_settings"
+        lateinit var instance: WebViewApp
             private set
     }
 }
 
 /**
- * Mirror of electron-kiosk's `src/store.js` schema.
+ * App settings store backed by SharedPreferences.
  *
  * We intentionally use SharedPreferences (synchronous reads) instead of Jetpack DataStore here
  * because MainActivity needs the current URL during onCreate(); switching to a Flow-based API

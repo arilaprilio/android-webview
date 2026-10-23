@@ -1,4 +1,4 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -19,10 +19,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.innovationsystem.kioskandroid.databinding.ActivityMainBinding
+import id.arilaprilio.webviewandroid.databinding.ActivityMainBinding
 
 /**
- * Fullscreen kiosk host. One WebView, three edge gestures, no browser chrome.
+ * Fullscreen WebView host. One WebView, three edge gestures, no browser chrome.
  *
  * Lifecycle contract:
  *   onCreate       → inflate, immersive, build WebView, subscribe gestures
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), EdgeGestureDetector.Callbacks {
     private lateinit var autoReload: AutoReloadScheduler
     private lateinit var credentials: CredentialStore
 
-    private val settings get() = KioskApp.instance.settings
+    private val settings get() = WebViewApp.instance.settings
 
     private var hasLoadedOnce = false
 
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), EdgeGestureDetector.Callbacks {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Keep the screen on while the kiosk is foregrounded — the whole point of kiosk mode.
+        // Keep the screen on while the app is foregrounded.
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         configureImmersive()
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity(), EdgeGestureDetector.Callbacks {
     }
 
     override fun onBackPressed() {
-        // In kiosk mode the system Back button navigates the WebView history only; it must
+        // The system Back button navigates the WebView history only; it must
         // never close the activity.
         if (binding.webview.canGoBack()) binding.webview.goBack()
     }
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity(), EdgeGestureDetector.Callbacks {
     }
 
     override fun onCornerLongPress() {
-        // Per user decision: long-press top-left exits kiosk without a PIN prompt.
+        // Per user decision: long-press top-left exits app without a PIN prompt.
         finishAffinity()
     }
 
@@ -129,9 +129,9 @@ class MainActivity : AppCompatActivity(), EdgeGestureDetector.Callbacks {
             loadWithOverviewMode = true
             useWideViewPort = true
             mediaPlaybackRequiresUserGesture = false
-            // Cache size budget — electron-kiosk uses MB; WebView API uses bytes.
+            // Cache size budget — the Electron version uses MB; WebView API uses bytes.
             cacheMode = WebSettings.LOAD_DEFAULT
-            // Mixed content allowed because kiosks commonly load intranet HTTP alongside HTTPS.
+            // Mixed content allowed because apps commonly load intranet HTTP alongside HTTPS.
             mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
             setSupportZoom(true)
             builtInZoomControls = false
@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity(), EdgeGestureDetector.Callbacks {
                 request: WebResourceRequest,
             ): Boolean {
                 // Keep all navigation inside the WebView — never spawn external browser.
-                // Intercept tel:, mailto:, intent: so the kiosk cannot leak to other apps.
+                // Intercept tel:, mailto:, intent: so the app cannot leak to other apps.
                 val scheme = request.url.scheme ?: return false
                 return scheme !in setOf("http", "https", "about", "data", "blob")
             }

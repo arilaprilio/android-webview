@@ -1,8 +1,8 @@
-package com.innovationsystem.kioskandroid
+package id.arilaprilio.webviewandroid
 
 /**
  * Replacement for the npm `parse-duration` module used by the Electron version.
- * Only the subset actually used by electron-kiosk is supported:
+ * Only the subset actually used by the Electron version is supported:
  *   - Suffixes: ms, s, m, h, d
  *   - Multiple segments: "1h30m", "2h45m10s"
  *   - Pure numbers are treated as milliseconds (matches parse-duration behaviour).
