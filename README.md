@@ -1,37 +1,41 @@
 # WebView Android
 
-Fullscreen Android WebView app dengan URL yang bisa di-custom via Settings.
+Fullscreen Android WebView browser with customizable URL and auto-reload.
 
-## Fitur
+## Features
 
-- **Fullscreen immersive** — status bar & navigation bar tersembunyi
-- **URL bisa di-custom** — atur lewat Settings (swipe dari tepi kiri)
-- **Auto-reload** — reload otomatis berdasarkan interval atau jam tertentu
-- **Dark/Light mode** — toggle lewat Settings
-- **HTTP Auth** — simpan credential untuk basic auth
+- **Fullscreen immersive** — hides status bar & navigation bar
+- **Customizable URL** — configure via Settings (swipe from left edge)
+- **Auto-reload** — automatic reload by interval or scheduled hour
+- **Dark / Light mode** — toggle in Settings
+- **HTTP Auth** — remembers credentials for basic authentication
 - **Edge gestures:**
-  - Swipe kiri → buka Settings
-  - Swipe kanan → toggle keyboard
-  - Swipe bawah → toolbar mini (reload, back, forward)
-  - Long-press pojok kiri atas → keluar app
-- **Landscape only** — dikunci orientasi landscape
-- **Keep screen on** — layar tidak mati selama app aktif
+  - Swipe left edge → open Settings
+  - Swipe right edge → toggle keyboard
+  - Swipe bottom edge → mini toolbar (reload, back, forward)
+  - Long-press top-left corner → exit app
+- **Landscape only** — locked to landscape orientation
+- **Keep screen on** — screen stays awake while the app is active
 
 ## Build (CI/CD)
 
-Project ini tidak perlu Gradle di lokal. Cukup push ke GitHub:
+No local Gradle installation required. Just push to GitHub:
 
-- **Push ke `main`** → auto build debug + release APK
-- **Push tag `v*`** → auto build + publish ke GitHub Releases
-- **Manual** → trigger dari tab Actions
+| Trigger | What happens |
+|---|---|
+| Push to `main` | Auto build debug + release APK |
+| Push tag `v*` | Auto build + publish to GitHub Releases |
+| Manual | Trigger from the Actions tab |
 
 ```bash
-# Release baru:
+# Create a new release:
 git tag v0.1.0
 git push origin v0.1.0
 ```
 
-## Struktur
+Download the APK from **Releases** or from **Actions → workflow run → Artifacts**.
+
+## Project Structure
 
 ```
 webview-android/
