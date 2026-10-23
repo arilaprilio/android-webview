@@ -59,12 +59,6 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.9.1")
     implementation("androidx.fragment:fragment-ktx:1.8.2")
 
-    // Persisted settings — replaces electron-store
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
-
-    // Encrypted SharedPreferences
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
-
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 }
